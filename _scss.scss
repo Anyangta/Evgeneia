@@ -1,0 +1,7 @@
+$positionSet: null, absolute, fixed, relative;
+
+@mixin boxSet($positionIndex, $widthIndex, $heightIndex){
+    width: $widthIndex;
+    height: $heightIndex;
+    position: nth($positionSet,$positionIndex);
+}
