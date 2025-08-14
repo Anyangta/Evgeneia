@@ -1,0 +1,31 @@
+@use 'scss' as sc;
+
+$width : 100%;
+$height : 100%;
+
+%li_display{
+    display: inline;
+}
+
+header{
+    $height: 200px;
+    @include sc.boxSet(4,$width,$height);
+    background-color: red;
+    
+    img{
+        @include sc.boxSet(2,50px,50px);
+        top : 50%;
+        left: 10%;
+        transform: translateY(-50%);
+    }
+
+    ul{
+        @include sc.boxSet(2,$width,30px);
+        left:10%;
+        bottom: 0px;
+
+    }
+    li{
+        @extend %li_display;
+    }
+}
