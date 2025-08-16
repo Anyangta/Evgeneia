@@ -8,9 +8,11 @@ $height : 100%;
 }
 
 header{
-    $height: 200px;
+    $height: 300px;
     @include sc.boxSet(4,$width,$height);
-    background-color: red;
+    background-image: url(/images/chess-1215079_1280.jpg);
+    background-size: cover;
+    background-position: center;
 
     ul{
         $width: 80%;
