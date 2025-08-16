@@ -11,21 +11,18 @@ header{
     $height: 200px;
     @include sc.boxSet(4,$width,$height);
     background-color: red;
-    
-    img{
-        @include sc.boxSet(2,50px,50px);
-        top : 50%;
-        left: 10%;
-        transform: translateY(-50%);
-    }
 
     ul{
+        $width: 80%;
         @include sc.boxSet(2,$width,30px);
         left:10%;
         bottom: 0px;
-
+        display: flex;
+        justify-content: space-evenly;
+        background-color: blue;
     }
     li{
         @extend %li_display;
+        font-size: 20px;
     }
 }
