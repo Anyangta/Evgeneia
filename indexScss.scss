@@ -26,5 +26,20 @@ header{
     li{
         @extend %li_display;
         font-size: 20px;
+        line-height: 1.5;
     }
+}
+
+main{
+    $width: 80%;
+    height: 100%;
+    @include sc.boxSet(4,$width,$height);
+    margin: 0 auto;
+    background-color: aquamarine;
+}
+
+notice{
+    @include sc.boxSet(4,$width,$height);
+    background-color: bisque;
+    display: block;
 }
