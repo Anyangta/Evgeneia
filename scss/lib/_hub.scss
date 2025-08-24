@@ -1,1 +1,10 @@
+@forward '../base/variables';
+@forward '../base/fuctions';
+@forward '../base/mixins';
 
+@forward '../layout/footer';
+@forward '../layout/header';
+@forward '../layout/main';
+@forward '../layout/mainImg';
+@forward '../layout/nav';
+@forward '../layout/section';
