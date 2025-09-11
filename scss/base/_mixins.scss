@@ -8,6 +8,18 @@
     }
 }
 
+@mixin posionSet($index){
+    @if $index == 1{
+        position: relative;
+    }
+    @if $index == 2{
+        position:absolute;
+    }
+    @if $index ==3 {
+        position: fixed;
+    }
+}
+
 @mixin indexBoxSet($indexElement, $w, $h){
     #{$indexElement}{
         @include boxSizeSet($w,$h);

@@ -6,4 +6,6 @@ $indexName : null;
 header{
     $indexName: &;
     @include indexBoxSet($indexName,20%,100%);
+    @include posionSet(3);
+    
 }
