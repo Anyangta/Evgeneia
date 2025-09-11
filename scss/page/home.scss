@@ -1,0 +1,9 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+$indexName : null;
+
+header{
+    $indexName: &;
+    @include indexBoxSet($indexName,20%,100%);
+}
