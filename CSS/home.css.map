@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,IAAI,CAAJ,oBAAI;AAaJ,AAAA,MAAM,CAAA;EARE,KAAK,EASW,KAAK;EALrB,MAAM,EAKgB,KAAK;CAClC",
-    "sources": [
-        "../SCSS/home.scss"
-    ],
-    "names": [],
-    "file": "home.css"
-}
+{"version":3,"sources":["../SCSS/home.scss","../SCSS/_mixins.scss","home.css"],"names":[],"mappings":"AAGA;ECAQ,WDCgB;ECGhB,aDHqB;AED7B","file":"home.css"}
