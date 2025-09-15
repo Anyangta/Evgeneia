@@ -1,11 +1,5 @@
-@use '../base/variables' as *;
-@use '../base/mixins' as *;
-
-$indexName : null;
+@use '/scss/lib/hub' as *;
 
 header{
-    $indexName: &;
-    @include indexBoxSet($indexName,20%,100%);
-    @include posionSet(3);
-    background-color: yellow;
+    @include aaa;    
 }
