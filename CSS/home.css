@@ -1,2 +1,6 @@
 @use '/SCSS/lib/hub' as *;
+header {
+  width: 100px;
+  height: 200px;
+}
 /*# sourceMappingURL=home.css.map */

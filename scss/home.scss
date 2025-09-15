@@ -1,1 +1,6 @@
-@use '/SCSS/lib/hub' as *;
+@use "mixins" as *;
+
+
+header{
+    @include boxSizeSet(50px,200px);
+}
