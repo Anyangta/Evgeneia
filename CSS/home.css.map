@@ -1,8 +1,8 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,IAAI,CAAJ,oBAAI",
     "sources": [
-        "../scss/page/home.scss"
+        "../SCSS/home.scss"
     ],
     "names": [],
     "file": "home.css"
