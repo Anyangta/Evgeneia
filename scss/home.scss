@@ -1,6 +1,6 @@
-@use '../SCSS/mixins' as *;
+@use '../SCSS/lib/hub' as *;
 
 
 header{
-    @include boxSizeSet(50px,200px);
+    @include boxSizeSet(20%,100%);
 }
