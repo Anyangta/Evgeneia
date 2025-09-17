@@ -36,3 +36,19 @@
 @mixin liStyleSet(){
     display: inline;
 }
+
+@mixin middleSort(){
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+@mixin herfStyle(){
+    a{
+        color : black;
+        text-decoration: none;
+    }
+    a:hover{
+        color: blue;
+    }
+}
