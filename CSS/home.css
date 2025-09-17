@@ -1,1 +1,12 @@
-/*# sourceMappingURL=home.css.map */
+header {
+  width: 100%;
+  height: 5%;
+  position: "fixed";
+}
+
+header {
+  background-color: yellow;
+}
+header ul li {
+  display: inline;
+}/*# sourceMappingURL=home.css.map */

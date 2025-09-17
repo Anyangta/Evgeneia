@@ -16,3 +16,7 @@
         position: $position;
     }
 }
+
+@mixin liStyleSet(){
+    display: inline;
+}

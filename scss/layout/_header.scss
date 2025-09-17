@@ -1,2 +1,14 @@
-@use '../base/variables';
-@use '../base/mixins';
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+@include layouSet(nth($headerInfo,1), nth($headerInfo,2),nth($headerInfo,3),nth($headerInfo,4));
+
+header{
+    background-color: yellow;
+    ul{
+        li{
+            @include liStyleSet();
+        }
+        
+    }
+}
