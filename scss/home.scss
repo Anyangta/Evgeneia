@@ -1,3 +1,6 @@
 @use '../SCSS/lib/hub' as *;
 
-
+body{
+    font-family: $bodyStyle;
+    font-size: 16px;
+}

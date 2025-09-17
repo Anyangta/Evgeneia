@@ -1,11 +1,20 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
-@include layouSet(nth($headerInfo,1), nth($headerInfo,2),nth($headerInfo,3),nth($headerInfo,4));
+@include layouSet(nth($headerInfo,1),nth($headerInfo,2), nth($headerInfo,3), nth($headerInfo,4));
 
 header{
     background-color: yellow;
+    h1{
+        background-color: red;
+        @include positoinSet(absolute,null,null,null,10%);
+        @include boxSizeSet(20%,100%);
+    }
+
     ul{
+        @include positoinSet(absolute,null,0,null,null);
+        @include boxSizeSet(50%,100%);
+        background-color: red;
         li{
             @include liStyleSet();
         }
