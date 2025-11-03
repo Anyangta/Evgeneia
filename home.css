@@ -29,7 +29,7 @@ a{
 }
 
 header{
-    background-color: rgb(178, 239, 243);
+    background-color: rgba(230, 221, 233, 0.445);
     z-index: 1;
     position: fixed;
     top : 0;
@@ -78,7 +78,7 @@ section{
     background-color: red;
     .innerBox{
         .profile{
-            
+
         }
     }
 }
