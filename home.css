@@ -1,0 +1,23 @@
+:root{
+    --semanticTagWidth : 100%;
+    --innerBoxWidth : 75%;
+    --marginCenter : 0 auto;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header, main, section, footer{
+    width: var(--semanticTagWidth);
+    .innerBox{
+        width: var(--innerBoxWidth);
+        margin: var(--marginCenter);
+    }
+}
+
+header{
+    background-color: rgb(178, 239, 243);
+}
