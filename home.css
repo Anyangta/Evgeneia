@@ -32,6 +32,8 @@ header{
     background-color: rgb(178, 239, 243);
     z-index: 1;
     position: fixed;
+    top : 0;
+
     .innerBox{
         padding-top : var(--NormalPadding);
         h1{
@@ -58,5 +60,23 @@ header{
                 margin  : 0px 60px;
             }
         }
+    }
+}
+
+main{
+    margin-top: var(--NormalPadding);
+    --mainPadding : 20%;
+    background-image: url(images/aaa.png);
+    padding-top : var(--mainPadding);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+section{
+    background-color: red;
+    .innerBox{
+        
     }
 }
