@@ -63,3 +63,15 @@ header{
         }
     }
 }
+
+
+main{
+    margin-top: var(--NormalPadding);
+    --mainPadding : 25%;
+    background-image: url(images/languageBg.png);
+    padding-top : var(--mainPadding);
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
