@@ -64,7 +64,6 @@ header{
     }
 }
 
-
 main{
     margin-top: var(--NormalPadding);
     --mainPadding : 25%;
@@ -74,4 +73,30 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+section{
+    overflow: hidden;
+    .aside{
+        width: 25%;
+        float: left;
+        height: 1000px;
+        background-color: aquamarine;
+    }
+    .innerBox{
+        margin: 0;
+        float: right;
+        background-color: red;
+        height: 1000px;
+        .article{
+            margin: var(--marginCenter);
+            width: 90%;
+            height: 1000px;
+            background-color: aqua;
+
+            h1{
+                padding-top: 2%;
+            }
+        }
+    }
 }
