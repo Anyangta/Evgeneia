@@ -107,6 +107,27 @@ section{
         }
         .Awards{
             margin-top: 2%;
+            height: 1000px;
+            .my-table{
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                th,td{
+                    border: 1px solid #ccc;
+                    padding: 12px;
+                    text-align: center;
+                }
+                th{
+                    background-color: #f4f4f4;
+                }
+                th:nth-child(1){
+                    width: 30%; 
+                }
+
+                th:nth-child(2){
+                    width: 70%; 
+                }
+            }
         }
     }
 }
