@@ -29,12 +29,13 @@ a{
 }
 
 header{
-    background-color: rgba(230, 221, 233, 0.445);
+    background-color: rgb(252, 244, 254);
     z-index: 1;
     position: fixed;
     top : 0;
 
     .innerBox{
+        position: relative;
         padding-top : var(--NormalPadding);
         h1{
             position: absolute;
@@ -57,7 +58,7 @@ header{
             bottom : 5px;
             right : 10%;
             li{
-                margin  : 0px 60px;
+                margin  : 0px 40px;
             }
         }
     }
@@ -65,8 +66,8 @@ header{
 
 main{
     margin-top: var(--NormalPadding);
-    --mainPadding : 20%;
-    background-image: url(images/aaa.png);
+    --mainPadding : 25%;
+    background-image: url(images/homeBg.png);
     padding-top : var(--mainPadding);
 
     background-repeat: no-repeat;
@@ -75,10 +76,19 @@ main{
 }
 
 section{
-    background-color: red;
     .innerBox{
         .profile{
-
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: red;
+            img{
+                display: block;
+                float: left;
+                width: 100px;
+                height: 100px;
+                margin-right: 50px;
+            }
         }
     }
 }
