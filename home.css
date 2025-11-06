@@ -79,16 +79,34 @@ section{
     .innerBox{
         .profile{
             position: relative;
-            width: 100%;
             overflow: hidden;
-            background-color: red;
             img{
                 display: block;
                 float: left;
-                width: 100px;
-                height: 100px;
-                margin-right: 50px;
+                width: 25%;
+                height: 250px;
             }
+            .profileText{
+                width: 75%;
+                float: right;
+                padding-left: 5%;
+                h1{
+                    color: rgb(6, 186, 251);
+                    margin-top: 5%;
+                }
+                h3{
+                    margin-top: 2%;
+                }
+                li{
+                    margin-left: 5%;
+                }
+                span{
+                    font-weight: bold;
+                }
+            }
+        }
+        .Awards{
+            margin-top: 2%;
         }
     }
 }
