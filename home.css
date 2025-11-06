@@ -78,6 +78,7 @@ main{
 section{
     .innerBox{
         .profile{
+            margin-top: 2%;
             position: relative;
             overflow: hidden;
             img{

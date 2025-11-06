@@ -1,0 +1,65 @@
+:root{
+    --semanticTagWidth : 100%;
+    --innerBoxWidth : 75%;
+    --NormalPadding : 5%;
+    --marginCenter : 0 auto;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header, main, section, footer{
+    width: var(--semanticTagWidth);
+    .innerBox{
+        width: var(--innerBoxWidth);
+        margin: var(--marginCenter);
+    }
+}
+
+a{
+    color: black;
+    text-decoration: none;
+
+    &:hover{
+        color: blue;
+    }
+}
+
+header{
+    background-color: rgb(252, 244, 254);
+    z-index: 1;
+    position: fixed;
+    top : 0;
+
+    .innerBox{
+        position: relative;
+        padding-top : var(--NormalPadding);
+        h1{
+            position: absolute;
+        }
+
+        ul{
+            position: absolute;
+            list-style: none;
+        }
+
+        li{
+            display: inline;
+        }
+
+        .headerLogo{
+            bottom : 0;
+        }
+
+        .headerMenu{
+            bottom : 5px;
+            right : 10%;
+            li{
+                margin  : 0px 40px;
+            }
+        }
+    }
+}
