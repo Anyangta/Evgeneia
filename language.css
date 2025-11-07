@@ -86,17 +86,18 @@ section{
     .innerBox{
         margin: 0;
         float: right;
-        background-color: red;
         height: 1000px;
         .article{
             margin: var(--marginCenter);
             width: 90%;
             height: 1000px;
-            background-color: aqua;
 
             h1{
                 padding-top: 2%;
             }
+            
+            
+
         }
     }
 }
