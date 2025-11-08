@@ -86,11 +86,9 @@ section{
     .innerBox{
         margin: 0;
         float: right;
-        height: 1000px;
         .article{
             margin: var(--marginCenter);
             width: 90%;
-            height: 1000px;
 
             h1{
                 padding-top: 2%;
