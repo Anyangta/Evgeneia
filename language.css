@@ -92,12 +92,11 @@ section{
 
             h1{
                 padding-top: 2%;
-                padding-left: 10%;
             }
             .study{
                 display: block;
                 float: left;
-                margin: 5% 10%;
+                margin: 5% 5%;
                 border: 3px solid black;
                 img{
                     display: block;
@@ -106,13 +105,10 @@ section{
                     margin: 50px;
                 }
                 h2{
-                    border-top: 3px solid black;
-                    
+                    border-top: 3px solid black;         
                 }
                 
             }
-            
-
         }
     }
 }
