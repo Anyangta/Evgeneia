@@ -82,6 +82,7 @@ section{
         float: left;
         height: 1000px;
         background-color: aquamarine;
+        padding: 2%;
     }
     .innerBox{
         margin: 0;
@@ -107,7 +108,6 @@ section{
                 h2{
                     border-top: 3px solid black;         
                 }
-                
             }
         }
     }
