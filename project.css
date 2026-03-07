@@ -74,3 +74,38 @@ main{
     background-size: cover;
     background-position: center;
 }
+
+section{
+    .innerBox{
+        padding-top: 3%;
+        .project{
+            padding: 20px;
+            h1{
+                margin-bottom: 10px;
+            }
+            .annc{
+                .anncLeft{
+                    width: 20%;
+                    float: left;
+                    img{
+                        width: 200px;
+                        height: 200px;
+                    }
+                }
+                .anncRight{
+                    height: 200px;
+                    li{
+                        list-style: none;
+                        margin-bottom: 8px;
+                    }
+                    .label{
+                        display: inline-block;
+                        width: 120px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        
+    }
+}
