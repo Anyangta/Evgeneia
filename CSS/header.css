@@ -10,8 +10,7 @@ body {
 header {
   width: 100%;
   background: #000;
-  border-bottom: 1px solid #e5e5e5;
-  position: relative;
+  position: fixed;
   z-index: 1000;
 }
 
