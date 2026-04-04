@@ -22,11 +22,11 @@ body {
   line-height: 3;
 }
 
-.research {
+.research-block {
   width: 100%;
 }
 
-.research .innerBox {
+.research-block .innerBox {
   width: 80%;
   margin: 0 auto;
 }
@@ -34,7 +34,7 @@ body {
 .content {
   width: 100%;
   min-height: 500px;
-  padding: 40px;
+  padding: 20px 0px;
   background: #fff;
 }
 
