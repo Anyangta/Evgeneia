@@ -9,4 +9,23 @@ body {
 
 .empty {
   padding-top: 80px;
+}
+
+.main {
+  background-image: url(/image/publications_mainImg.png);
+  height: 300px;
+}
+
+.notice {
+  background-color: #f9f5ff;
+  height: 100px;
+}
+
+.notice .innerBox {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 3;
+}
+.notice .innerBox h1 {
+  color: brown;
 }/*# sourceMappingURL=publications.css.map */

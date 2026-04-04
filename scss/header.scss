@@ -1,111 +1,110 @@
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 body{
-  margin: 0;
-  font-family: Arial, sans-serif;
+margin: 0;
+font-family: Arial, sans-serif;
 }
-  
+
 header{
-  width: 100%;
-  background: #000;
-  position: fixed;
-  z-index: 1000;
-  
+width: 100%;
+background: #000;
+position: fixed;
+z-index: 1000;
 }
 
 h1{
-  margin: 0;
+margin: 0;
 }
 
 .header-innerBox{
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+width: 100%;
+margin: 0 auto;
+padding: 0 24px;
+height: 80px;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
-  
+
 .logo-area{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: 5%;
+display: flex;
+align-items: center;
+gap: 12px;
+margin-left: 5%;
 }
-  
+
 .logo{
-  width: 60px;
-  height: 56px;
-  object-fit: contain;
+width: 60px;
+height: 56px;
+object-fit: contain;
 }
-  
+
 .site-title{
-  text-decoration: none;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 700;
+text-decoration: none;
+color: #fff;
+font-size: 22px;
+font-weight: 700;
 }
 
 .main-nav{
-  margin-right: 10%;
+margin-right: 10%;
 }
-  
+
 .main-nav .gnb{
-  display: flex;
-  align-items: center;
-  gap: 50px;
+display: flex;
+align-items: center;
+gap: 50px;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.main-nav .gnb > li{
+position: relative;
+}
+
+.main-nav .gnb > li > a{
+display: flex;
+align-items: center;
+gap: 10px;
+height: 80px;
+text-decoration: none;
+color: #fff;
+font-size: 16px;
+font-weight: 500;
+}
+
+.menu-arrow{
+font-size: 11px;
+}
+
+.submenu{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: #000;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
   list-style: none;
   margin: 0;
-  padding: 0;
-}
-  
-.main-nav .gnb > li{
-  position: relative;
-}
-  
-.main-nav .gnb > li > a{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 80px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-}
-  
-.arrow{
-  font-size: 11px;
-}
-  
-.submenu{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    background: #000;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-    list-style: none;
-    margin: 0;
-    padding: 10px 0;
-    display: none;
+  padding: 10px 0;
+  display: none;
 }
 
 .submenu li a{
-    display: block;
-    padding: 15px 18px;
-    text-decoration: none;
-    color: #fff;
-    white-space: nowrap;
+  display: block;
+  padding: 15px 18px;
+  text-decoration: none;
+  color: #fff;
+  white-space: nowrap;
 }
 
 .submenu li a:hover{
-    background: #222;
+  background: #222;
 }
 
 .has-submenu:hover .submenu{
-    display: block;
+  display: block;
 }

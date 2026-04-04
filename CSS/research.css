@@ -21,6 +21,9 @@ body {
   margin: 0 auto;
   line-height: 3;
 }
+.notice .innerBox h1 {
+  color: blue;
+}
 
 .research-block {
   width: 100%;
