@@ -23,8 +23,129 @@ body{
 .notice .innerBox{
     width: 80%;
     margin: 0 auto;
-    line-height: 3;
+    
     h1{
         color: brown;
+        line-height: 3;
     }
+}
+
+.ImgSelect {
+    background-color: #fff;
+    padding: 40px 0;
+}
+
+.ImgSelect .innerBox {
+    width: 80%;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+}
+
+.ImgSelect .innerBox img {
+    width: 100%;
+    aspect-ratio: 3 / 4; 
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.ImgSelect .innerBox img:hover {
+    transform: scale(1.03);
+}
+
+.pubList {
+    padding: 40px 0 60px;
+    background-color: #fff;
+}
+
+.pubList .innerBox {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.pubItem {
+    display: grid;
+    grid-template-columns: 1fr 160px 160px 60px 100px; /* 제목 | 저자 | 저널 | 연도 | 링크 */
+    align-items: center;
+    gap: 16px;
+    padding: 16px 12px;
+    border-bottom: 1px solid #e8e0f0;
+    transition: background-color 0.2s ease;
+}
+
+.pubItem:first-child {
+    border-top: 2px solid brown;
+}
+
+.pubItem:hover {
+    background-color: #f9f5ff;
+}
+
+.pubTitle a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.pubTitle a:hover {
+    color: brown;
+    text-decoration: underline;
+}
+
+.pubAuthors {
+    font-size: 0.82rem;
+    color: #666;
+}
+
+.pubJournal {
+    font-size: 0.85rem;
+    color: #555;
+    font-style: italic;
+}
+
+.pubYear {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+    font-weight: 600;
+}
+
+.pubLinks {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-doi, .btn-pdf {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-doi {
+    background-color: brown;
+    color: white;
+}
+
+.btn-doi:hover {
+    background-color: #8b0000;
+}
+
+.btn-pdf {
+    background-color: #eee;
+    color: #333;
+}
+
+.btn-pdf:hover {
+    background-color: #ddd;
 }
