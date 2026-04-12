@@ -1,0 +1,159 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'DM Sans', Arial, sans-serif; background: #fff; color: #1a1a1a; }
+
+.anim { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.anim.from-bottom { transform: translateY(30px); }
+.anim.visible     { opacity: 1; transform: translate(0, 0); }
+.anim.delay-1 { transition-delay: 0.1s; }
+.anim.delay-2 { transition-delay: 0.2s; }
+.anim.delay-3 { transition-delay: 0.3s; }
+.anim.delay-4 { transition-delay: 0.4s; }
+.anim.delay-5 { transition-delay: 0.5s; }
+
+.empty { padding-top: 80px; }
+
+/* 히어로 */
+.awards-hero {
+    background: #fff;
+    padding: 70px 0 55px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ah-inner {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ah-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8a7a40;
+}
+
+.awards-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4.5rem;
+    margin: 0;
+    line-height: 1;
+    color: #e8d48a;
+}
+
+.ah-sub {
+    font-size: 0.88rem;
+    color: #6a5a30;
+}
+
+.ah-bg-text {
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'DM Serif Display', serif;
+    font-size: 10rem;
+    color: rgba(232, 212, 138, 0.05);
+    pointer-events: none;
+    letter-spacing: 0.1em;
+}
+
+/* 바디 */
+.awards-body { padding: 60px 0 80px; }
+
+.awards-inner {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.award-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0 24px;
+    align-items: start;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #ede8d8;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.award-item:hover {
+    box-shadow: 0 8px 32px rgba(180, 140, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* 왼쪽 랭크 컬럼 */
+.ai-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 28px 10px;
+    height: 100%;
+}
+
+.ai-rank span { font-size: 2rem; }
+
+.ai-rank div {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.ai-rank.gold   { background: #2a2000; color: #e8c84a; }
+.ai-rank.silver { background: #1e1e22; color: #b0b0c0; }
+.ai-rank.bronze { background: #221408; color: #cc8844; }
+.ai-rank.special{ background: #0e1a0e; color: #70aa70; }
+
+/* 오른쪽 내용 */
+.ai-content {
+    padding: 24px 24px 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.ai-content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.ai-year {
+    font-size: 0.78rem;
+    color: #aaa;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.ai-org {
+    font-size: 0.8rem;
+    color: #999;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.ai-desc {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
