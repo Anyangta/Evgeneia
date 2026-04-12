@@ -1,0 +1,42 @@
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #0a0a16;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#splash-canvas {
+  width: min(640px, 90vw);
+  aspect-ratio: 80/56;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.splash-hint {
+  font-family: "Courier New", monospace;
+  font-size: 0.65rem;
+  color: #2a2a3a;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+  animation: blink 1.5s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=splash.css.map */
