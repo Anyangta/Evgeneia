@@ -7,6 +7,36 @@ body{
     font-family: Arial, sans-serif;
 }
 
+/* 기본 상태: 숨겨진 채로 왼쪽에 위치 */
+.anim {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 오른쪽에서 오는 버전 */
+.anim.from-right {
+    transform: translateX(40px);
+}
+
+/* 아래에서 올라오는 버전 */
+.anim.from-bottom {
+    transform: translateY(30px);
+}
+
+/* 보일 때 */
+.anim.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* 딜레이 - 여러 요소가 순서대로 나올 때 */
+.anim.delay-1 { transition-delay: 0.1s; }
+.anim.delay-2 { transition-delay: 0.2s; }
+.anim.delay-3 { transition-delay: 0.3s; }
+.anim.delay-4 { transition-delay: 0.4s; }
+.anim.delay-5 { transition-delay: 0.5s; }
+
 .empty{
     padding-top: 80px;
 }
@@ -102,4 +132,151 @@ body{
     opacity: 0.3;
     cursor: not-allowed;
     transform: none;
+}
+
+/* content 기본 */
+.content {
+    width: 100%;
+    min-height: 500px;
+    padding: 40px 20px;
+    background: #fff;
+}
+
+/* 카드 형태로 감싸는 래퍼 */
+.content-card {
+    border-left: 4px solid blue;
+    padding: 24px 28px;
+    background: #f9f5ff;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 24px;
+}
+
+/* 페이지 제목 */
+.content-card h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.3rem;
+    color: #111;
+}
+
+/* 날짜 or 태그 라인 */
+.content-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.content-tag {
+    background-color: blue;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+}
+
+.content-date {
+    font-size: 0.82rem;
+    color: #999;
+}
+
+/* 본문 */
+.content-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.8;
+}
+
+/* 구분선 */
+.content-divider {
+    border: none;
+    border-top: 1px solid #e8e0f0;
+    margin: 30px 0;
+}
+
+.project-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 20px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 100, 0.1);
+    transform: translateY(-2px);
+}
+
+/* 상단 행: 제목 + 기간 */
+.project-card .project-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #111;
+    align-self: center;
+}
+
+.project-card .project-period {
+    font-size: 0.82rem;
+    color: #999;
+    white-space: nowrap;
+    align-self: center;
+    text-align: right;
+}
+
+/* 중간 행: 배지들 */
+.project-meta {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 4px 0;
+}
+
+.badge-type {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.badge-type.gov {
+    background-color: #1a5fa8;  /* 국가과제 - 파란색 */
+}
+
+.badge-type.corp {
+    background-color: #2e7d4f;  /* 기업과제 - 초록색 */
+}
+
+.badge-agency {
+    font-size: 0.78rem;
+    color: #555;
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.badge-role {
+    font-size: 0.78rem;
+    color: #777;
+    border: 1px solid #ccc;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+/* 본문 */
+.project-card .project-desc {
+    grid-column: 1 / -1;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
 }

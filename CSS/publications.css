@@ -8,6 +8,50 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* 기본 상태: 숨겨진 채로 왼쪽에 위치 */
+.anim {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 오른쪽에서 오는 버전 */
+.anim.from-right {
+  transform: translateX(40px);
+}
+
+/* 아래에서 올라오는 버전 */
+.anim.from-bottom {
+  transform: translateY(30px);
+}
+
+/* 보일 때 */
+.anim.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* 딜레이 - 여러 요소가 순서대로 나올 때 */
+.anim.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.anim.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.anim.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.anim.delay-4 {
+  transition-delay: 0.4s;
+}
+
+.anim.delay-5 {
+  transition-delay: 0.5s;
+}
+
 .empty {
   padding-top: 80px;
 }

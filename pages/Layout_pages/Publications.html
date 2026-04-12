@@ -10,11 +10,12 @@
 <body>
     <div id="header"></div>
     <script src="/pages/JS/headerJS.JS"></script>
+
     <div class="empty"></div>
 
-    <div class="main"></div>
+    <div class="main anim from-bottom"></div>
 
-    <div class="notice">
+    <div class="notice anim">
         <div class="innerBox">
             <h1>[Journal Cover Gallery]</h1>
         </div>
@@ -22,16 +23,15 @@
 
     <div class="ImgSelect">
         <div class="innerBox">
-            <img src="/image/cover1.png" alt="Journal Cover 1">
-            <img src="/image/cover2.png" alt="Journal Cover 2">
-            <img src="/image/cover3.png" alt="Journal Cover 3">
-            <img src="/image/cover4.png" alt="Journal Cover 4">
-            <img src="/image/cover5.png" alt="Journal Cover 5">
+            <img class="anim delay-1" src="/image/cover1.png" alt="Journal Cover 1">
+            <img class="anim delay-2" src="/image/cover2.png" alt="Journal Cover 2">
+            <img class="anim delay-3" src="/image/cover3.png" alt="Journal Cover 3">
+            <img class="anim delay-4" src="/image/cover4.png" alt="Journal Cover 4">
+            <img class="anim delay-5" src="/image/cover5.png" alt="Journal Cover 5">
         </div>
     </div>
 
-
-    <div class="notice">
+    <div class="notice anim from-right">
         <div class="innerBox">
             <h1>[Selected Publications]</h1>
         </div>
@@ -39,7 +39,7 @@
 
     <div class="pubList">
         <div class="innerBox">
-            <div class="pubItem">
+            <div class="pubItem anim delay-1">
                 <div class="pubTitle">
                     <a href="#">Highly Efficient Organic Solar Cells via Novel Acceptor Design</a>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="pubItem">
+            <div class="pubItem anim delay-2">
                 <div class="pubTitle">
                     <a href="#">Perovskite-Based Light-Emitting Diodes with Enhanced Stability</a>
                 </div>
@@ -66,6 +66,7 @@
             </div>
         </div>
     </div>
-    
+
+    <script src="/pages/JS/scrollAnimation.js"></script>  
 </body>
 </html>
