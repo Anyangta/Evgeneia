@@ -1,254 +1,294 @@
 (function () {
-    const splash = document.getElementById('splash');
+  const splash = document.getElementById('splash');
 
-    // 탭 닫고 재오픈 시에만 재생
-    if (sessionStorage.getItem('splashSeen')) {
-        splash.style.display = 'none';
-        return;
+  // 탭 닫고 재오픈 시에만 재생
+  if (sessionStorage.getItem('splashSeen')) {
+    splash.style.display = 'none';
+    return;
+  }
+  sessionStorage.setItem('splashSeen', 'true');
+
+  const canvas = document.getElementById('splash-canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+
+  // 80×56 픽셀 캔버스 (CSS가 560×392로 확대)
+  const W = 80, H = 56;
+  canvas.width = W;
+  canvas.height = H;
+
+  function px(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(x, y, w, h); }
+
+  // 4×5 픽셀 폰트
+  const F = {
+    A: [[0,1,1,0],[1,0,0,1],[1,1,1,1],[1,0,0,1],[1,0,0,1]],
+    B: [[1,1,1,0],[1,0,0,1],[1,1,1,0],[1,0,0,1],[1,1,1,0]],
+    C: [[0,1,1,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[0,1,1,0]],
+    D: [[1,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,1,1,0]],
+    E: [[1,1,1,1],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,1,1,1]],
+    F: [[1,1,1,1],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,0,0,0]],
+    G: [[0,1,1,0],[1,0,0,0],[1,0,1,1],[1,0,0,1],[0,1,1,0]],
+    H: [[1,0,0,1],[1,0,0,1],[1,1,1,1],[1,0,0,1],[1,0,0,1]],
+    I: [[1,1,1],[0,1,0],[0,1,0],[0,1,0],[1,1,1]],
+    K: [[1,0,0,1],[1,0,1,0],[1,1,0,0],[1,0,1,0],[1,0,0,1]],
+    L: [[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
+    M: [[1,0,1,0,1],[1,1,0,1,1],[1,0,1,0,1],[1,0,0,0,1],[1,0,0,0,1]],
+    N: [[1,0,0,1],[1,1,0,1],[1,0,1,1],[1,0,0,1],[1,0,0,1]],
+    O: [[0,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
+    P: [[1,1,1,0],[1,0,0,1],[1,1,1,0],[1,0,0,0],[1,0,0,0]],
+    Q: [[0,1,1,0],[1,0,0,1],[1,0,1,1],[1,0,0,1],[0,1,1,1]],
+    R: [[1,1,1,0],[1,0,0,1],[1,1,1,0],[1,0,1,0],[1,0,0,1]],
+    S: [[0,1,1,1],[1,0,0,0],[0,1,1,0],[0,0,0,1],[1,1,1,0]],
+    T: [[1,1,1],[0,1,0],[0,1,0],[0,1,0],[0,1,0]],
+    U: [[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
+    W: [[1,0,1,0,1],[1,0,1,0,1],[1,1,1,1,1],[0,1,0,1,0],[0,1,0,1,0]],
+    Y: [[1,0,0,1],[1,0,0,1],[0,1,1,0],[0,0,1,0],[0,0,1,0]],
+    Z: [[1,1,1,1],[0,0,0,1],[0,1,1,0],[1,0,0,0],[1,1,1,1]],
+    '0': [[0,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
+    '1': [[0,1,0],[1,1,0],[0,1,0],[0,1,0],[1,1,1]],
+    '>': [[1,0,0],[0,1,0],[0,0,1],[0,1,0],[1,0,0]],
+    '=': [[0,0,0],[1,1,1],[0,0,0],[1,1,1],[0,0,0]],
+    '*': [[1,0,1],[0,1,0],[1,0,1],[0,0,0],[0,0,0]],
+    ';': [[0,1],[0,1],[0,0],[0,1],[1,0]],
+    '-': [[0,0,0],[0,0,0],[1,1,1],[0,0,0],[0,0,0]],
+  };
+
+  function gw(ch) {
+    if (ch === ' ') return 3;
+    const g = F[ch.toUpperCase()];
+    return g ? g[0].length + 1 : 5;
+  }
+
+  function txt(str, sx, sy, col, max) {
+    let cx = sx;
+    const n = max !== undefined ? Math.min(max, str.length) : str.length;
+    for (let i = 0; i < n; i++) {
+      const ch = str[i].toUpperCase();
+      if (ch === ' ') { cx += 3; continue; }
+      const g = F[ch];
+      if (!g) { cx += 4; continue; }
+      g.forEach((row, ry) => row.forEach((bit, rx) => {
+        if (bit) px(cx + rx, sy + ry, 1, 1, col);
+      }));
+      cx += g[0].length + 1;
     }
-    sessionStorage.setItem('splashSeen', 'true');
+    return cx;
+  }
 
-    const canvas = document.getElementById('splash-canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.imageSmoothingEnabled = false;
+  // 페이즈 상수 & 시작 시간 (ms)
+  const PH = { DARK: 0, LIGHT: 1, RACK: 2, CONNECT: 3, QUERY: 4, DONE: 5, OUT: 6 };
+  const PT = [0, 350, 850, 1700, 2350, 3700, 5200];
 
-    // 80×56 픽셀 캔버스 (CSS가 640×448로 확대)
-    const W = 80, H = 56;
-    canvas.width = W;
-    canvas.height = H;
+  // 형광등 깜빡임 패턴
+  const FLICK = [0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
-    // 사각형 그리기 헬퍼
-    function p(x, y, w, h, c) {
-        ctx.fillStyle = c;
-        ctx.fillRect(x, y, w, h);
-    }
+  const t0 = Date.now();
+  let phase = 0, rafId;
+  const ptcls = [];
 
-    // 4×5 픽셀 폰트
-    const FONT = {
-        E: [[1,1,1,1],[1,0,0,0],[1,1,1,0],[1,0,0,0],[1,1,1,1]],
-        L: [[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
-        A: [[0,1,1,0],[1,0,0,1],[1,1,1,1],[1,0,0,1],[1,0,0,1]],
-        B: [[1,1,1,0],[1,0,0,1],[1,1,1,0],[1,0,0,1],[1,1,1,0]],
-        O: [[0,1,1,0],[1,0,0,1],[1,0,0,1],[1,0,0,1],[0,1,1,0]],
-        T: [[1,1,1,1],[0,1,1,0],[0,1,1,0],[0,1,1,0],[0,1,1,0]],
-        '>': [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,1,0,0],[1,0,0,0]],
-    };
+  // ── 메인 드로우 ──────────────────────────
+  function draw(ms) {
+    // 배경
+    px(0, 0, W, H, '#060810');
+    ctx.fillStyle = 'rgba(15,35,90,0.12)';
+    for (let y = 44; y < H; y += 4) ctx.fillRect(0, y, W, 1);
+    ctx.fillStyle = 'rgba(15,35,90,0.06)';
+    for (let x = 0; x < W; x += 8) ctx.fillRect(x, 44, 1, 12);
 
-    function drawText(str, sx, sy, col, maxLen) {
-        let cx = sx;
-        const lim = maxLen !== undefined ? maxLen : str.length;
-        for (let i = 0; i < lim && i < str.length; i++) {
-            const ch = str[i].toUpperCase();
-            if (ch === ' ') { cx += 3; continue; }
-            const g = FONT[ch];
-            if (!g) { cx += 5; continue; }
-            g.forEach((row, ry) => row.forEach((bit, rx) => {
-                if (bit) p(cx + rx, sy + ry, 1, 1, col);
-            }));
-            cx += 5;
-        }
-    }
-
-    // 페이즈 상수 & 시작 시간 (ms)
-    const PH = { ROOM:0, TYPE:1, REACH:2, FLICKER:3, TEXT:4, LOAD:5, OUT:6 };
-    const PT = [0, 800, 1600, 2000, 2400, 3900, 4900];
-
-    // 모니터 켜질 때 깜빡임 패턴 (0=꺼짐, 1=켜짐, 50ms 단위)
-    const FLICKER = [0,1,0,1,0,1,1,1];
-
-    const t0 = Date.now();
-    let phase = 0;
-    let rafId;
-
-    function draw(ms) {
-        // ── 배경 ──────────────────────────
-        p(0, 0, W, 50, '#0a0a16');
-        for (let y = 0; y < 50; y += 5) {
-            ctx.fillStyle = 'rgba(255,255,255,0.015)';
-            ctx.fillRect(0, y, W, 1);
-        }
-        p(0, 50, W, 6, '#0f0f1e');
-        p(0, 50, W, 1, '#1a1a2a');
-
-        // ── 의자 ──────────────────────────
-        p(32, 24, 16,  2, '#363648');
-        p(32, 26,  2,  9, '#2a2a3a');
-        p(46, 26,  2,  9, '#2a2a3a');
-        p(28, 37, 24,  3, '#2a2a3a');
-        p(28, 37, 24,  1, '#363648');
-        p(29, 40,  2, 10, '#222230');
-        p(49, 40,  2, 10, '#222230');
-        p(34, 44, 12,  1, '#222230');
-
-        // ── 책상 ──────────────────────────
-        p(8, 33, 64, 3, '#7a4e28');
-        p(8, 36, 64, 1, '#4a2e14');
-        p(9, 37,  3, 13, '#4a2e14');
-        p(68, 37, 3, 13, '#4a2e14');
-
-        // ── 키보드 ─────────────────────────
-        p(26, 31, 28, 2, '#161616');
-        for (let k = 0; k < 5; k++) p(27 + k * 5, 31, 4, 1, '#222222');
-
-        // ── 모니터 ─────────────────────────
-        p(32, 32, 16, 2, '#1a1a1a'); // 받침
-        p(30, 33, 20, 1, '#1a1a1a');
-        p(37, 29,  6, 4, '#1a1a1a'); // 목
-        p(22, 10, 36, 20, '#1a1a1a'); // 본체
-        p(23, 11, 34, 18, '#242424');
-
-        // 화면 상태 계산
-        let scrBg = '#050808', glowA = 0, monOn = false;
-
-        if (phase === PH.FLICKER) {
-            const step = Math.min(FLICKER.length - 1, Math.floor((ms - PT[PH.FLICKER]) / 50));
-            monOn = FLICKER[step] === 1;
-            scrBg = monOn ? '#081408' : '#050808';
-            glowA = monOn ? 0.5 : 0;
-        } else if (phase >= PH.TEXT) {
-            monOn = true;
-            glowA = Math.min(1, (ms - PT[PH.TEXT]) / 300);
-            scrBg = '#081408';
-        }
-
-        p(24, 12, 32, 15, scrBg); // 화면
-
-        // 스캔라인
-        if (glowA > 0) {
-            ctx.fillStyle = `rgba(0,200,70,${glowA * 0.2})`;
-            for (let sl = 12; sl < 27; sl += 2) ctx.fillRect(24, sl, 32, 1);
-        }
-
-        // 모니터 빛 번짐
-        if (glowA > 0) {
-            const gr = ctx.createRadialGradient(40, 19, 0, 40, 19, 28);
-            gr.addColorStop(0, `rgba(0,200,80,${glowA * 0.15})`);
-            gr.addColorStop(1, 'rgba(0,200,80,0)');
-            ctx.fillStyle = gr;
-            ctx.fillRect(0, 0, W, H);
-        }
-
-        // 화면 텍스트 타이핑
-        if (phase >= PH.TEXT) {
-            const chars = Math.floor((ms - PT[PH.TEXT]) / 130);
-            const L1 = 'EL LAB', L2 = '> BOOT';
-            drawText(L1, 25, 14, '#00ff66', Math.min(chars, L1.length));
-            if (chars > L1.length) {
-                drawText(L2, 25, 21, '#00cc44', chars - L1.length);
-            }
-            // 커서 깜빡임
-            if (Math.floor(ms / 400) % 2 === 0) {
-                const total = Math.min(chars, L1.length + L2.length);
-                const onL2 = total > L1.length;
-                const lc  = onL2 ? total - L1.length : total;
-                const txt = onL2 ? L2 : L1;
-                let cx = 25;
-                for (let i = 0; i < lc && i < txt.length; i++) cx += txt[i] === ' ' ? 3 : 5;
-                p(cx, onL2 ? 21 : 14, 1, 5, '#00ff66');
-            }
-        }
-
-        // 전원 LED
-        p(53, 28, 2, 1, monOn ? '#00aa44' : '#252525');
-
-        // ── 사람 ──────────────────────────
-        // 다리
-        p(35, 37, 5, 4, '#1e2030');
-        p(40, 37, 5, 4, '#1e2030');
-
-        // 상체
-        p(33, 26, 14,  8, '#1a3460');
-        p(33, 32, 14,  2, '#0e2040');
-
-        // 왼팔 (키보드 위, 타이핑 애니메이션)
-        const tap = phase === PH.TYPE && Math.floor(ms / 180) % 2;
-        p(24, 29 + (tap ? 1 : 0), 9, 3, '#1a3460');
-        p(24, 31 + (tap ? 1 : 0), 5, 1, '#e8a070');
-
-        // 오른팔 (전원 버튼 향해 올라갔다가 복귀)
-        const reach =
-            phase === PH.REACH   ? Math.min(1, (ms - PT[PH.REACH]) / 300) :
-            phase === PH.FLICKER ? 1 :
-            phase === PH.TEXT    ? Math.max(0, 1 - (ms - PT[PH.TEXT]) / 400) : 0;
-
-        const ax = Math.round(46 + reach * 6);
-        const ay = Math.round(29 - reach * 3);
-        p(ax, ay, 10, 3, '#1a3460');
-        if (reach > 0.7) {
-            p(56, 27, 3, 1, '#e8a070'); // 버튼 누르는 손
-        } else {
-            p(46, 31, 5, 1, '#e8a070'); // 키보드 위 손
-        }
-
-        // 목
-        p(37, 25, 6, 2, '#e8a070');
-
-        // 머리카락
-        p(35, 20, 10, 3, '#160a00');
-        p(34, 22,  1, 3, '#160a00');
-        p(45, 22,  1, 3, '#160a00');
-
-        // 얼굴
-        p(35, 22, 10, 6, '#e8a070');
-
-        // 눈
-        p(37, 24, 2, 1, '#200a00');
-        p(42, 24, 2, 1, '#200a00');
-
-        // 코
-        p(39, 26, 2, 1, '#c07850');
-
-        // 입 (모니터 켜진 후 800ms 뒤 미소)
-        if (phase >= PH.TEXT && ms - PT[PH.TEXT] > 800) {
-            p(37, 27, 1, 1, '#c07850');
-            p(38, 28, 4, 1, '#c07850');
-            p(42, 27, 1, 1, '#c07850');
-        } else {
-            p(37, 27, 6, 1, '#c07850');
-        }
-
-        // 모니터 빛 얼굴 반사
-        if (glowA > 0.4) {
-            ctx.fillStyle = `rgba(0,200,80,${(glowA - 0.4) * 0.1})`;
-            ctx.fillRect(35, 20, 10, 8);
-        }
-
-        // ── 로딩바 ─────────────────────────
-        if (phase >= PH.LOAD) {
-            const lp = Math.min(1, (ms - PT[PH.LOAD]) / 800);
-            p(20, 52, 40,                  2, '#1a1a2a');
-            p(20, 52, Math.floor(40 * lp), 2, '#00cc55');
-        }
+    // 천장 형광등
+    let la = 0;
+    if (phase === PH.LIGHT) {
+      const step = Math.min(FLICK.length - 1, Math.floor((ms - PT[1]) / 55));
+      la = FLICK[step];
+    } else if (phase >= PH.RACK) la = 1;
+    if (la) {
+      px(12, 0, 56, 1, `rgba(190,210,255,${la * 0.9})`);
+      px(13, 1, 54, 1, `rgba(140,170,255,${la * 0.4})`);
+      const g = ctx.createLinearGradient(0, 0, 0, 18);
+      g.addColorStop(0, `rgba(80,120,255,${la * 0.16})`);
+      g.addColorStop(1, 'rgba(80,120,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(12, 0, 56, 18);
     }
 
-    function tick() {
-        const ms = Date.now() - t0;
+    // 서버 랙
+    rack(0, 6, false, ms);
+    rack(63, 6, true, ms);
 
-        // 페이즈 전환
-        if      (ms >= PT[PH.OUT]     && phase < PH.OUT)     phase = PH.OUT;
-        else if (ms >= PT[PH.LOAD]    && phase < PH.LOAD)    phase = PH.LOAD;
-        else if (ms >= PT[PH.TEXT]    && phase < PH.TEXT)    phase = PH.TEXT;
-        else if (ms >= PT[PH.FLICKER] && phase < PH.FLICKER) phase = PH.FLICKER;
-        else if (ms >= PT[PH.REACH]   && phase < PH.REACH)   phase = PH.REACH;
-        else if (ms >= PT[PH.TYPE]    && phase < PH.TYPE)    phase = PH.TYPE;
-
-        if (phase >= PH.OUT) {
-            dismiss();
-            return;
-        }
-
-        draw(ms);
-        rafId = requestAnimationFrame(tick);
+    // 데이터 파티클
+    if (phase >= PH.CONNECT) {
+      if (Math.random() < 0.22) {
+        const fl = Math.random() > 0.5;
+        ptcls.push({
+          x: fl ? 18 : 57,
+          y: 10 + Math.random() * 24,
+          vx: fl ? 0.75 : -0.75,
+          vy: (Math.random() - 0.5) * 0.14,
+          life: 1,
+          r: fl ? [0, 110, 255] : [130, 60, 255],
+        });
+      }
+      for (let i = ptcls.length - 1; i >= 0; i--) {
+        const p = ptcls[i];
+        p.x += p.vx; p.y += p.vy; p.life -= 0.019;
+        if (p.life <= 0 || p.x < 18 || p.x > 57) { ptcls.splice(i, 1); continue; }
+        px(p.x | 0, p.y | 0, 1, 1, `rgba(${p.r[0]},${p.r[1]},${p.r[2]},${p.life})`);
+      }
+      // 점선 연결선
+      const dp = Math.floor(ms / 200) % 4;
+      ctx.fillStyle = 'rgba(0,80,200,0.18)';
+      for (let x = 18; x < 24; x++) if ((x + dp) % 4 < 2) ctx.fillRect(x, 22, 1, 1);
+      ctx.fillStyle = 'rgba(110,50,200,0.18)';
+      for (let x = 57; x < 63; x++) if ((x - dp) % 4 < 2) ctx.fillRect(x, 22, 1, 1);
     }
 
-    function dismiss() {
-        cancelAnimationFrame(rafId);
-        splash.classList.add('hide');
-        splash.addEventListener('transitionend', () => splash.style.display = 'none', { once: true });
+    // 모니터
+    monitor(ms);
+
+    // DB 실린더
+    if (phase >= PH.RACK) {
+      cyl(1, 43, [0, 55, 170], [0, 90, 255], Math.min(1, (ms - PT[2]) / 600));
+    }
+    if (phase >= PH.RACK && ms - PT[2] > 400) {
+      cyl(64, 43, [100, 30, 200], [160, 60, 255], Math.min(1, (ms - PT[2] - 400) / 600));
     }
 
-    // 클릭 시 스킵
-    splash.addEventListener('click', dismiss);
+    // 타이틀 & 로딩바
+    if (phase >= PH.DONE) {
+      const ta = Math.min(1, (ms - PT[5]) / 500);
+      const lp = Math.min(1, (ms - PT[5]) / 1100);
+      txt('DB LAB', 26, 44, `rgba(0,130,255,${ta})`);
+      px(15, 52, 50, 2, '#060c18');
+      px(15, 52, Math.floor(50 * lp), 2, '#0055dd');
+      if (lp > 0) {
+        ctx.fillStyle = 'rgba(0,90,255,0.28)';
+        ctx.fillRect(15, 51, Math.floor(50 * lp), 1);
+      }
+    }
+  }
 
-    requestAnimationFrame(tick);
+  // ── 서버 랙 ──────────────────────────────
+  function rack(rx, ry, right, ms) {
+    px(rx, ry, 17, 36, '#090f1e');
+    px(rx, ry, 17, 1, '#13203a');
+    px(rx, ry + 35, 17, 1, '#13203a');
+    px(rx, ry, 1, 36, '#13203a');
+    px(rx + 16, ry, 1, 36, '#13203a');
+    px(rx + 1, ry + 36, 2, 4, '#07090f');
+    px(rx + 13, ry + 36, 2, 4, '#07090f');
+
+    for (let u = 0; u < 4; u++) {
+      const uy = ry + 2 + u * 8;
+      px(rx + 1, uy, 15, 7, '#0b1728');
+      px(rx + 1, uy, 15, 1, '#142238');
+      px(rx + 1, uy + 6, 15, 1, '#060b15');
+      for (let d = 0; d < 3; d++) px(rx + 2 + d * 4, uy + 2, 3, 3, '#080c16');
+
+      const delay = PT[2] + (right ? u + 3 : u) * 200;
+      const on = ms > delay;
+      const lx = right ? rx + 1 : rx + 15;
+      px(lx, uy + 1, 1, 1, on ? (right ? '#8833ff' : '#00ee77') : '#111');
+      px(lx, uy + 3, 1, 1, (on && Math.floor(ms / (75 + u * 40)) % (3 + u) === 0) ? '#ffaa00' : '#150b00');
+    }
+  }
+
+  // ── 모니터 ──────────────────────────────
+  function monitor(ms) {
+    px(23, 7, 34, 32, '#0b1220');
+    px(23, 7, 34, 1, '#162035'); px(23, 38, 34, 1, '#162035');
+    px(23, 7, 1, 32, '#162035'); px(56, 7, 1, 32, '#162035');
+    px(24, 8, 32, 30, '#080f1c');
+    px(25, 9, 30, 28, '#030810');
+    px(36, 39, 8, 2, '#0b1220');
+    px(33, 41, 14, 1, '#0b1220');
+
+    if (phase < PH.RACK) return;
+
+    const ga = Math.min(1, (ms - PT[2]) / 600);
+    px(25, 9, 30, 28, '#030c1a');
+    ctx.fillStyle = `rgba(0,100,220,${ga * 0.1})`;
+    for (let sl = 9; sl < 37; sl += 2) ctx.fillRect(25, sl, 30, 1);
+
+    const gr = ctx.createRadialGradient(40, 23, 0, 40, 23, 24);
+    gr.addColorStop(0, `rgba(0,80,200,${ga * 0.18})`);
+    gr.addColorStop(1, 'rgba(0,80,200,0)');
+    ctx.fillStyle = gr;
+    ctx.fillRect(0, 0, W, H);
+    px(54, 37, 1, 1, `rgba(0,80,220,${ga})`);
+
+    // 화면 클리핑
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(25, 9, 30, 28);
+    ctx.clip();
+
+    if (phase >= PH.QUERY) {
+      const SQL = ['SEL *', 'FROM', 'ID=1;'];
+      const chs = Math.floor((ms - PT[4]) / 90);
+      const cols = ['#3399ff', '#2288ee', '#44aaff'];
+      let drawn = 0, curL = -1, curI = 0;
+
+      for (let li = 0; li < SQL.length; li++) {
+        const ln = SQL[li];
+        const show = Math.max(0, Math.min(ln.length, chs - drawn));
+        if (show > 0) txt(ln, 27, 11 + li * 7, cols[li], show);
+        if (drawn + ln.length >= chs && curL < 0) { curL = li; curI = chs - drawn; }
+        drawn += ln.length;
+      }
+
+      // 커서 깜빡임
+      const total = SQL.reduce((s, l) => s + l.length, 0);
+      if (chs < total && Math.floor(ms / 450) % 2 === 0 && curL >= 0) {
+        let cx = 27;
+        for (let ci = 0; ci < curI; ci++) cx += gw(SQL[curL][ci]);
+        px(cx, 11 + curL * 7, 1, 5, cols[curL]);
+      }
+
+      // 결과 표시
+      if (phase >= PH.DONE) {
+        const ra = Math.min(1, (ms - PT[5]) / 350);
+        txt('> OK', 27, 32, `rgba(0,220,110,${ra})`);
+      }
+    } else if (ga > 0.4) {
+      const fa = (ga - 0.4) / 0.6;
+      txt('BOOT', 30, 14, `rgba(0,80,200,${fa})`);
+      txt('DB', 35, 22, `rgba(0,60,180,${fa * 0.7})`);
+    }
+
+    ctx.restore();
+  }
+
+  // ── DB 실린더 ─────────────────────────────
+  function cyl(cx, cy, body, rim, alpha) {
+    const [br, bg, bb] = body, [rr, rg, rb] = rim, a = alpha;
+    px(cx, cy, 13, 8, `rgba(${br},${bg},${bb},${a})`);
+    px(cx, cy, 13, 1, `rgba(${rr},${rg},${rb},${a})`);
+    px(cx, cy + 7, 13, 1, `rgba(${rr},${rg},${rb},${a})`);
+    px(cx, cy + 3, 13, 1, `rgba(${Math.max(0, br - 15)},${Math.max(0, bg - 15)},${Math.max(0, bb - 15)},${a * 0.35})`);
+    px(cx + 1, cy - 2, 11, 3, `rgba(${br},${bg},${bb},${a * 0.9})`);
+    px(cx + 2, cy - 3, 9, 1, `rgba(${rr},${rg},${rb},${a})`);
+    px(cx + 1, cy - 2, 11, 1, `rgba(${rr},${rg},${rb},${a * 0.45})`);
+  }
+
+  // ── 게임 루프 ─────────────────────────────
+  function tick() {
+    const ms = Date.now() - t0;
+    const ord = [PH.OUT, PH.DONE, PH.QUERY, PH.CONNECT, PH.RACK, PH.LIGHT];
+    for (const ph of ord) {
+      if (ms >= PT[ph] && phase < ph) { phase = ph; break; }
+    }
+    if (phase >= PH.OUT) { dismiss(); return; }
+    draw(ms);
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function dismiss() {
+    cancelAnimationFrame(rafId);
+    splash.classList.add('hide');
+    splash.addEventListener('transitionend', () => splash.style.display = 'none', { once: true });
+  }
+
+  // 클릭 시 스킵
+  splash.addEventListener('click', dismiss);
+  requestAnimationFrame(tick);
 })();
