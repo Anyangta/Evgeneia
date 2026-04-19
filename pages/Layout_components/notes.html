@@ -6,7 +6,7 @@
     <title>Study Notes</title>
     <link rel="stylesheet" href="/CSS/notes.css">
     <link rel="stylesheet" href="/CSS/header.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -15,12 +15,14 @@
 
     <div class="page">
         <div class="page-header">
-            <span class="page-tag">Study Notes</span>
-            <h1 class="page-title" id="page-title"></h1>
+            <div class="page-header-left">
+                <span class="page-tag">Study Notes</span>
+                <h1 class="page-title" id="page-title"></h1>
+            </div>
+            <span class="page-count" id="page-count"></span>
         </div>
 
         <div id="note-list"></div>
-
         <div class="pagination" id="pagination"></div>
     </div>
 
