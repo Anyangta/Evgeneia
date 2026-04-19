@@ -416,3 +416,18 @@ body {
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
+
+.slide-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+}
+
+.slide-link:hover {
+    opacity: 0.5;
+}
